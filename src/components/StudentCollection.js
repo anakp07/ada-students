@@ -4,19 +4,22 @@ import React from 'react';
 import Student from './Student';
 
 const StudentCollection = (props) => {
-  
     const studentComponents = props.students.map((student, i) => {
         return(
-            <li key= {i}>
-                <Student fullName={student.fullName} email={student.email}/>
-            </li>
+            <Student
+            fullName={student.fullName}
+            email={student.email}
+            birthdate={student.birthdate}
+            key={student.email}
+            />
         );
     });
-  return (
-    <ul className="student-collection">
+    return (
+    <ul className="StudentCollection">
         {studentComponents}
+
     </ul>
-  );
+    );
 };
 
 export default StudentCollection;
