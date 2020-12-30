@@ -19,7 +19,7 @@ const Student = (props) => {
     return (
         <div>
         <h3>{fullName}</h3>
-        <input value= {fullName} onChange={onFullNameInputChange}/>
+        <input value= {fullName} onChange={onFullNameInputChange}/> 
         <ul>
             <li>Class: C13</li>
             <li>Birthday: {props.birthday}</li>
