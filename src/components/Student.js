@@ -10,7 +10,6 @@ const Student = (props) => {
   const onButtonClick = () => setPresent(!present);  //EVENT HANDLER method this is the event handler  when event is triggered
   // taking current value of present, negating it and update value using setPresent 
   // toggle the value will flip between true and false 
-  // any kind of code of how we choose to update of this specific component 
 
     const onFullNameInputChange = (event) => { //EVENT HANDLER 
         setFullName(event.target.value);
