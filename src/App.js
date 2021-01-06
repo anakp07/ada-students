@@ -1,5 +1,5 @@
 import React, {useState}  from 'react';
-// import Student from './components/Student';
+import NewStudentForm from './components/NewStudentForm';
 import StudentCollection from './components/StudentCollection';
 import './App.css';
 
@@ -39,14 +39,18 @@ function App() {
   };
 
   return (
-    <div className="Student">
-      <header className="App-header">
-        <h1> Ada Students!</h1>
-      </header>
-      <main>
-      <StudentCollection students ={students} />
-      </main>
+    <div className="App">
+      <StudentCollection students={studentList} onUpdateStudent={updateStudent}/>
+      <NewStudentForm />
     </div>
+    // <div className="Student">
+    //   <header className="App-header">
+    //     <h1> Ada Students!</h1>
+    //   </header>
+    //   <main>
+    //   <StudentCollection students ={students} />
+    //   </main>
+    // </div>
   );
 }
 
