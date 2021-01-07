@@ -27,7 +27,7 @@ function App() {
   const updateStudent =(updatedStudent) => {
     const students = [];
     studentList.forEach( (student) => {
-      if (student.id == updateStudent.id) {
+      if (student.id === updateStudent.id) {
         students.push(updatedStudent); // grabs new data and discards old 
       } else {
         students.push(student); // grabs the unchanged data --> maintating list order
@@ -35,13 +35,30 @@ function App() {
     });
 
     setStudentList(students);
-
   };
+
+  const addStudent = (student) => {
+    // duplicate student list 
+    const newStudentList = [...students];
+    // find max id and add one 
+    const nextId = Math.max(...newStudentList.map((student) => student.id)) + 1; // gives me array of new student ids 
+    
+    newStudentList.push({
+      // ...student, // gives us fullName: student.fullName, email: student.email, present: false
+      fullName: student.fullName,
+      email: student.email,
+      present: false,
+      id: nextId,
+    });
+
+    setStudentList(newStudentList);
+
+  }
 
   return (
     <div className="App">
       <StudentCollection students={studentList} onUpdateStudent={updateStudent}/>
-      <NewStudentForm />
+      <NewStudentForm onSubmitCallback={addStudent}/>
     </div>
     // <div className="Student">
     //   <header className="App-header">

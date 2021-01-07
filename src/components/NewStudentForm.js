@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './NewStudentForm.css';
+import PropTypes from 'prop-types';
 
 const NewStudentForm = (props) => {
 
@@ -22,10 +23,27 @@ const NewStudentForm = (props) => {
             email: event.target.value,
         }
         setStudent(newStudent);
+        }; 
+
+        const onFormSubmit = (event) => {
+            event.preventDefault();
+            console.log('submitting form');
+
+            if (student.fullName !== '' && student.email !== ''){
+                // send data back to app 
+                props.onSubmitCallback(student);
+
+                setStudent({
+                    fullName: '',
+                    email: '',
+                });
+            }
         }
 
         return(
-            <form className="new-student-form">
+            <form 
+            onSubmit={onFormSubmit}
+            className="new-student-form">
                 <div>
                     <label htmlFor="fullName">Name:</label>
                     <input
@@ -50,5 +68,7 @@ const NewStudentForm = (props) => {
         );
     };
 
-
+NewStudentForm.propTypes = {
+    onSubmitCallback: PropTypes.func.isRequired,
+};
 export default NewStudentForm; 
