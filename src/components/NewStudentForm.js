@@ -9,21 +9,32 @@ const NewStudentForm = (props) => {
         email: '',
     });
 
-    const onNameChange = (event) => {
-        const newStudent = {
-            ...student,  // <-- gets all fiels of students and puts them in new object
-            fullName: event.target.value
-        }
-        setStudent(newStudent);
-    };
-    
-    const onEmailChange = (event) => {
-        const newStudent = {
+    const onInputChange = (event) => {
+
+        const newFormFieldValues = {
             ...student,
-            email: event.target.value,
         }
-        setStudent(newStudent);
-        }; 
+        const {name, value} = event.target;
+
+        newFormFieldValues[name] = value;
+        setStudent(newFormFieldValues);
+    }
+
+    // const onNameChange = (event) => {
+    //     const newStudent = {
+    //         ...student,  // <-- gets all fiels of students and puts them in new object
+    //         fullName: event.target.value
+    //     }
+    //     setStudent(newStudent);
+    // };
+    
+    // const onEmailChange = (event) => {
+    //     const newStudent = {
+    //         ...student,
+    //         email: event.target.value,
+    //     }
+    //     setStudent(newStudent);
+    //     }; 
 
         const onFormSubmit = (event) => {
             event.preventDefault();
@@ -49,7 +60,7 @@ const NewStudentForm = (props) => {
                     <input
                     name="fullName"
                     value={student.fullName}
-                    onChange={onNameChange}
+                    onChange={onInputChange}
                     />
                 </div>
                 <div>
@@ -57,7 +68,7 @@ const NewStudentForm = (props) => {
                     <input
                     name="email" 
                     value={student.email}
-                    onChange={onEmailChange}
+                    onChange={onInputChange}
                     />
                 </div>
                 <input
